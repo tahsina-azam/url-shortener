@@ -7,13 +7,14 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+app.use(express.static('public'));//all static files are in public folder we are telling it to express.
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 let proxyToOriginalUrl = [];
